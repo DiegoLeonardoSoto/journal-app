@@ -12,9 +12,11 @@ import {
   Toolbar,
   Typography
 } from '@mui/material'
+import { useSelector } from 'react-redux'
 
 // eslint-disable-next-line react/prop-types
 export const SideBar = ({ drawerWidth = 240 }) => {
+  const { displayName } = useSelector((state) => state.auth)
   return (
     <Box
       component="nav"
@@ -30,7 +32,7 @@ export const SideBar = ({ drawerWidth = 240 }) => {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Diego Soto
+            {displayName}
           </Typography>
         </Toolbar>
         <Divider />
