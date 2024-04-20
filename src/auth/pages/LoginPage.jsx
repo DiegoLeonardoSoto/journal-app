@@ -1,23 +1,23 @@
 import { Link as RouterLink } from 'react-router-dom'
-import { Button, Grid, TextField, Typography } from '@mui/material'
+import { Alert, Button, Grid, TextField, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { AuthLayout } from '../layout/AuthLayout'
 import { useForm } from '../../hooks'
 import { Google } from '@mui/icons-material'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-  checkingAuthentication,
-  startGoogleSignIn
+  startGoogleSignIn,
+  startLoginWithEmailPassword
 } from '../../store/auth/thunks'
 import { STATUS } from '../../store/auth/authSlice'
 import { useMemo } from 'react'
 
 export const LoginPage = () => {
-  const { status } = useSelector((state) => state.auth)
+  const { status, errorMessage } = useSelector((state) => state.auth)
 
   const { email, password, onInputChange } = useForm({
-    email: 'diego@google.com',
-    password: '123456'
+    email: '',
+    password: ''
   })
 
   const isAuthenticating = useMemo(() => status === STATUS.CHECKING, [status])
@@ -26,8 +26,7 @@ export const LoginPage = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log({ email, password })
-    dispatch(checkingAuthentication(email, password))
+    dispatch(startLoginWithEmailPassword({ email, password }))
   }
 
   const onGoogleSignIn = () => {
@@ -61,6 +60,15 @@ export const LoginPage = () => {
               value={password}
               onChange={onInputChange}
             />
+          </Grid>
+
+          <Grid
+            item
+            xs={12}
+            sx={{ mt: 2 }}
+            display={errorMessage ? '' : 'none'}
+          >
+            <Alert severity="error">{errorMessage}</Alert>
           </Grid>
 
           <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
