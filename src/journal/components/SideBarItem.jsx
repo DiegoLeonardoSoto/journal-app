@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux'
 import { setActiveNote } from '../../store/journal'
 
 // eslint-disable-next-line react/prop-types
-export const SideBarItem = ({ title, body, uid, date, imageUrls = [] }) => {
+export const SideBarItem = ({ title, body, id, date, imageUrls = [] }) => {
   const dispatch = useDispatch()
 
   const newTitlte = useMemo(() => {
@@ -25,7 +25,7 @@ export const SideBarItem = ({ title, body, uid, date, imageUrls = [] }) => {
   }, [body])
 
   const handleActiveNote = () => {
-    dispatch(setActiveNote({ id: uid, title, body, date, imageUrls }))
+    dispatch(setActiveNote({ id, title, body, date, imageUrls }))
   }
 
   return (
