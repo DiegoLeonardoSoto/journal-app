@@ -1,22 +1,12 @@
-import { TurnedInNot } from '@mui/icons-material'
-import {
-  Box,
-  Divider,
-  Drawer,
-  Grid,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Toolbar,
-  Typography
-} from '@mui/material'
+import { Box, Divider, Drawer, List, Toolbar, Typography } from '@mui/material'
 import { useSelector } from 'react-redux'
+import { SideBarItem } from './SideBarItem'
 
 // eslint-disable-next-line react/prop-types
 export const SideBar = ({ drawerWidth = 240 }) => {
   const { displayName } = useSelector((state) => state.auth)
+  const { notes } = useSelector((state) => state.journal)
+
   return (
     <Box
       component="nav"
@@ -37,18 +27,8 @@ export const SideBar = ({ drawerWidth = 240 }) => {
         </Toolbar>
         <Divider />
         <List>
-          {['Enero', 'Febrero', 'Marzo', 'Abril'].map((text) => (
-            <ListItem key={crypto.randomUUID()} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <TurnedInNot />
-                </ListItemIcon>
-                <Grid container direction="column">
-                  <ListItemText primary={text} />
-                  <ListItemText primary={'Lorem ipsum dolor sit amet.'} />
-                </Grid>
-              </ListItemButton>
-            </ListItem>
+          {notes.map((note) => (
+            <SideBarItem key={note.id} {...note} />
           ))}
         </List>
       </Drawer>
