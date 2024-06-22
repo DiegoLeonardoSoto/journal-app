@@ -28,6 +28,7 @@ export const LoginPage = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
+    console.log({ email, password })
     dispatch(startLoginWithEmailPassword({ email, password }))
   }
 
@@ -39,6 +40,7 @@ export const LoginPage = () => {
   return (
     <AuthLayout title="Login">
       <form
+        aria-label="submit-form"
         onSubmit={onSubmit}
         className="animate__animated animate__fadeIn animate__faster"
       >
@@ -93,6 +95,7 @@ export const LoginPage = () => {
                 disabled={isAuthenticating}
                 variant="contained"
                 fullWidth
+                aria-label="google-btn"
                 onClick={onGoogleSignIn}
               >
                 <Google />

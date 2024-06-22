@@ -54,7 +54,6 @@ export const RegisterPage = () => {
 
   return (
     <AuthLayout title="Crear cuenta">
-      <h1>FormValid: {isFormValid ? 'true' : 'false'}</h1>
       <form
         onSubmit={onSubmit}
         className="animate__animated animate__fadeIn animate__faster"
@@ -95,6 +94,7 @@ export const RegisterPage = () => {
               placeholder="Constraseña"
               fullWidth
               name="password"
+              aria-label="password"
               value={password}
               onChange={onInputChange}
               error={!!passwordValid && formSubmitted}

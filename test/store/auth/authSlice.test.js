@@ -10,7 +10,7 @@ import {
   demoUser,
   initialState,
   notAuthenticatedState
-} from '../../fixtures/authFixure'
+} from '../../fixtures/authFixture'
 
 describe('test on authSlice', () => {
   test('should return initial state and be called "auth"', () => {
