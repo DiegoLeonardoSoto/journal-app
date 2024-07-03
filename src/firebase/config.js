@@ -28,8 +28,6 @@ const firebaseConfig = {
   measurementId: VITE_MEASUREMENT_ID
 }
 
-console.log(firebaseConfig)
-
 // Initialize Firebase
 export const FirebaseApp = initializeApp(firebaseConfig)
 export const FirebaseAuth = getAuth(FirebaseApp)
