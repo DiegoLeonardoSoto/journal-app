@@ -17,7 +17,7 @@ const {
   VITE_MEASUREMENT_ID
 } = getEnvironments()
 
-// Your web app's Firebase configuration
+//Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: VITE_API_KEY,
   authDomain: VITE_AUTH_DOMAIN,
